@@ -32,7 +32,6 @@
   color: #111827 !important;
 }
 
-/* Add background for the custom date filter dropdown */
 .ant-dropdown .ant-dropdown-menu,
 .no-filter-border .ant-dropdown-menu,
 .ant-dropdown .ant-dropdown-menu-root,
@@ -42,7 +41,6 @@
   border-radius: 12px;
 }
 
-/* Add background for the custom dropdownRender container */
 .custom-date-dropdown {
   background: #fff;
   border-radius: 12px;
