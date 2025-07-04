@@ -14,7 +14,8 @@
     "dayjs": "^1.11.13",
     "next": "15.3.4",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "vercel": "^44.2.11"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
