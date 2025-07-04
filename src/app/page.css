@@ -1,0 +1,51 @@
+.no-table-border .ant-table, .no-table-border .ant-table-container, .no-table-border .ant-table-content, .no-table-border .ant-table-thead > tr > th, .no-table-border .ant-table-tbody > tr > td, .no-table-border .ant-table-thead > tr, .no-table-border .ant-table-tbody > tr {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.no-table-border .ant-table-cell {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.no-filter-border .ant-picker, .no-filter-border .ant-picker-range, .no-filter-border .ant-picker-input, .no-filter-border .ant-picker-active-bar, .no-filter-border .ant-picker-range-separator, .no-filter-border .ant-picker-input > input, .no-filter-border .ant-btn, .no-filter-border .ant-dropdown, .no-filter-border .ant-dropdown-menu {
+  border: none !important;
+  box-shadow: none !important;
+  background-clip: padding-box;
+}
+
+.no-filter-border .ant-btn:focus, .no-filter-border .ant-btn:hover, .no-filter-border .ant-btn:active {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.no-filter-border .ant-dropdown-menu-item:hover, 
+.no-filter-border .ant-dropdown-menu-item-active {
+  background-color: #e5e7eb !important;
+  color: #111827 !important;
+}
+
+.no-filter-border .ant-dropdown-menu-item-selected,
+.no-filter-border .ant-dropdown-menu-item-selected:hover,
+.no-filter-border .ant-dropdown-menu-item-active {
+  background-color: #e5e7eb !important;
+  color: #111827 !important;
+}
+
+/* Add background for the custom date filter dropdown */
+.ant-dropdown .ant-dropdown-menu,
+.no-filter-border .ant-dropdown-menu,
+.ant-dropdown .ant-dropdown-menu-root,
+.no-filter-border .ant-dropdown-menu-root {
+  background: #fff !important;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+  border-radius: 12px;
+}
+
+/* Add background for the custom dropdownRender container */
+.custom-date-dropdown {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+}
+
