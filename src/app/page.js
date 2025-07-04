@@ -25,32 +25,37 @@ export default function Home() {
   const [payloads, setPayloads] = useState({});
   const [selectedMenu, setSelectedMenu] = useState("all");
   const [selectedDate, setSelectedDate] = useState(null);
-   const [presetRange, setPresetRange] = useState(null);
+  const [presetRange, setPresetRange] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
-      const [launchRes, rocketRes, padRes, payloadRes] = await Promise.all([
-        axios.get("https://api.spacexdata.com/v4/launches"),
-        axios.get("https://api.spacexdata.com/v4/rockets"),
-        axios.get("https://api.spacexdata.com/v4/launchpads"),
-        axios.get("https://api.spacexdata.com/v4/payloads"),
-      ]);
+      setLoading(true);
+      try {
+        const [launchRes, rocketRes, padRes, payloadRes] = await Promise.all([
+          axios.get("https://api.spacexdata.com/v4/launches"),
+          axios.get("https://api.spacexdata.com/v4/rockets"),
+          axios.get("https://api.spacexdata.com/v4/launchpads"),
+          axios.get("https://api.spacexdata.com/v4/payloads"),
+        ]);
 
-      const rocketMap = {};
-      rocketRes.data.forEach((r) => (rocketMap[r.id] = r.name));
+        const rocketMap = {};
+        rocketRes.data.forEach((r) => (rocketMap[r.id] = r.name));
 
-      const padMap = {};
-      padRes.data.forEach((p) => (padMap[p.id] = p.name));
+        const padMap = {};
+        padRes.data.forEach((p) => (padMap[p.id] = p.name));
 
-      const payloadMap = {};
-      payloadRes.data.forEach((p) => (payloadMap[p.id] = { name: p.name, orbit: p.orbit }));
+        const payloadMap = {};
+        payloadRes.data.forEach((p) => (payloadMap[p.id] = { name: p.name, orbit: p.orbit }));
 
-      setLaunches(launchRes.data);
-      setRockets(rocketMap);
-      setLaunchpads(padMap);
-      setPayloads(payloadMap);
+        setLaunches(launchRes.data);
+        setRockets(rocketMap);
+        setLaunchpads(padMap);
+        setPayloads(payloadMap);
+      } finally {
+        setLoading(false);
+      }
     };
-
     fetchData();
   }, []);
 
@@ -180,7 +185,7 @@ export default function Home() {
         trigger={["click"]}
         overlayClassName="no-filter-border"
         placement="bottomLeft"
-        dropdownRender={() => (
+        popupRender={() => (
           <div style={{
             background: 'white',
             borderRadius: 8,
@@ -292,6 +297,16 @@ export default function Home() {
       style={{ fontSize: 12, border: 'none' }}
       bordered={false}
       className="no-table-border"
+      loading={loading}
+      locale={{
+        emptyText: loading
+          ? null
+          : (
+            <div style={{ padding: '32px 0', color: '#888', fontWeight: 500, fontSize: 15 }}>
+              No results found for the specified filter
+            </div>
+          )
+      }}
     />
   </Content>
 </Layout>
