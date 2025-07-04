@@ -192,7 +192,7 @@ export default function Home() {
           borderBottom: "1px solid #e8e8e8",
         }}
       >
-        <img src="/logo.png" alt="logo" style={{ height: 24 }} />
+        <img src="/Logo.png" alt="logo" style={{ height: 24 }} />
       </Header>
 
       <Content
